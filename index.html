@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PawNamics - Find Trusted Pet Sitters</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>">
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo" data-page="home">
+                <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+                    <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+                    <circle cx="9" cy="10" r="1.5" fill="currentColor"/>
+                    <circle cx="15" cy="10" r="1.5" fill="currentColor"/>
+                </svg>
+                <span>PawNamics</span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="#" class="nav-link active" data-page="home">Home</a>
+                <a href="#" class="nav-link" data-page="sitters">Find Sitters</a>
+                <a href="#" class="nav-link" data-page="shelters">Shelters</a>
+                <a href="#" class="nav-link" data-page="affiliates">Affiliates</a>
+            </div>
+            <div class="nav-auth" id="navAuth">
+                <button class="btn btn-ghost" id="loginBtn">Log In</button>
+                <button class="btn btn-primary" id="signupBtn">Sign Up</button>
+            </div>
+            <div class="nav-user hidden" id="navUser">
+                <div class="user-menu" id="userMenu">
+                    <button class="user-btn" id="userBtn">
+                        <span class="user-avatar" id="userAvatar">JD</span>
+                        <span class="user-name" id="userName">John</span>
+                        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </button>
+                    <div class="user-dropdown" id="userDropdown">
+                        <button class="dropdown-item" id="myProfileBtn" data-page="profile">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                <circle cx="12" cy="7" r="4"/>
+                            </svg>
+                            My Profile
+                        </button>
+                        <button class="dropdown-item" id="settingsBtn" data-page="profile">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="3"/>
+                                <path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                            </svg>
+                            Settings
+                        </button>
+                        <div class="dropdown-divider"></div>
+                        <button class="dropdown-item text-danger" id="logoutBtn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+                                <polyline points="16 17 21 12 16 7"/>
+                                <line x1="21" y1="12" x2="9" y2="12"/>
+                            </svg>
+                            Log Out
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="3" y1="12" x2="21" y2="12"/>
+                    <line x1="3" y1="6" x2="21" y2="6"/>
+                    <line x1="3" y1="18" x2="21" y2="18"/>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <!-- Home Page -->
+        <section class="page active" id="homePage" data-page="home">
+            <div class="hero">
+                <div class="hero-bg">
+                    <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1920&q=80" alt="Happy dog" class="hero-image">
+                    <div class="hero-overlay"></div>
+                </div>
+                <div class="hero-content">
+                    <h1 class="hero-title animate-fade-up">Find the Perfect<br><span class="text-accent">Pet Sitter</span></h1>
+                    <p class="hero-subtitle animate-fade-up delay-1">Connect with trusted, loving pet sitters in your neighborhood. Whether you need daily walks or extended care, we've got tails covered.</p>
+                    <div class="hero-actions animate-fade-up delay-2">
+                        <button type="button" class="btn btn-primary btn-lg" id="findSitterBtn">Find a Sitter</button>
+                        <button class="btn btn-secondary btn-lg" id="heroBecomeSitter">Become a Sitter</button>
+                    </div>
+                    <div class="hero-stats animate-fade-up delay-3">
+                        <div class="stat">
+                            <span class="stat-value">2,500+</span>
+                            <span class="stat-label">Active Sitters</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">50,000+</span>
+                            <span class="stat-label">Happy Pets</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">4.9</span>
+                            <span class="stat-label">Average Rating</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section how-it-works">
+                <div class="container">
+                    <h2 class="section-title">How PawNamics Works</h2>
+                    <p class="section-subtitle">Three simple steps to peace of mind</p>
+                    <div class="steps-grid">
+                        <div class="step-card animate-fade-up">
+                            <div class="step-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="11" cy="11" r="8"/>
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                                </svg>
+                            </div>
+                            <h3>Search</h3>
+                            <p>Browse sitters in your area with filters for rate, services, and availability</p>
+                        </div>
+                        <div class="step-card animate-fade-up delay-1">
+                            <div class="step-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                    <circle cx="9" cy="7" r="4"/>
+                                    <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                </svg>
+                            </div>
+                            <h3>Connect</h3>
+                            <p>Message sitters, read reviews, and find your perfect pet care match</p>
+                        </div>
+                        <div class="step-card animate-fade-up delay-2">
+                            <div class="step-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                    <polyline points="9 12 11 14 15 10"/>
+                                </svg>
+                            </div>
+                            <h3>Relax</h3>
+                            <p>Book with confidence knowing your furry friend is in loving hands</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section testimonials">
+                <div class="container">
+                    <h2 class="section-title text-center">What Pet Parents Say</h2>
+                    <div class="testimonials-grid">
+                        <div class="testimonial-card animate-fade-up">
+                            <div class="testimonial-rating">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            </div>
+                            <p class="testimonial-text">"Sarah was amazing with our Golden Retriever Max! She sent us updates and photos throughout the day. We couldn't have asked for a better experience."</p>
+                            <div class="testimonial-author">
+                                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop" alt="Emily R.">
+                                <div>
+                                    <strong>Emily R.</strong>
+                                    <span>Dog Mom</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-card animate-fade-up delay-1">
+                            <div class="testimonial-rating">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            </div>
+                            <p class="testimonial-text">"As a cat dad, I was nervous about leaving my two Persians. Mike understood their personalities and gave them exactly the care they needed!"</p>
+                            <div class="testimonial-author">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop" alt="David K.">
+                                <div>
+                                    <strong>David K.</strong>
+                                    <span>Cat Dad</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-card animate-fade-up delay-2">
+                            <div class="testimonial-rating">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            </div>
+                            <p class="testimonial-text">"The booking process was seamless and finding a sitter last minute was no problem. Our puppy Luna loved her time at day care!"</p>
+                            <div class="testimonial-author">
+                                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop" alt="Jessica M.">
+                                <div>
+                                    <strong>Jessica M.</strong>
+                                    <span>Puppy Parent</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section cta-section">
+                <div class="container">
+                    <div class="cta-card">
+                        <div class="cta-content">
+                            <h2>Are You a Pet Sitter?</h2>
+                            <p>Join our community of trusted pet care professionals. Set your own rates, build your client base, and do what you love.</p>
+                            <button class="btn btn-primary btn-lg" id="ctaBecomeSitter">Start Earning Today</button>
+                        </div>
+                        <div class="cta-image">
+                            <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=600&q=80" alt="Happy sitter with dogs">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Find Sitters Page -->
+        <section class="page" id="sittersPage" data-page="sitters">
+            <div class="page-header">
+                <div class="container">
+                    <h1 class="page-title">Find Your Perfect Pet Sitter</h1>
+                    <p class="page-subtitle">Browse trusted sitters in your area</p>
+                </div>
+            </div>
+            <div class="container">
+                <div class="search-section">
+                    <div class="search-bar">
+                        <div class="search-input-wrapper">
+                            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"/>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                            </svg>
+                            <input type="text" class="search-input" id="searchLocation" placeholder="Enter city, state, or zip code">
+                        </div>
+                        <button class="btn btn-primary" id="searchSitters">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"/>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                            </svg>
+                            Search
+                        </button>
+                    </div>
+                    <div class="near-me-section">
+                        <button class="btn btn-secondary" id="sittersNearMe">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <line x1="12" y1="8" x2="12" y2="16"/>
+                                <line x1="8" y1="12" x2="16" y2="12"/>
+                            </svg>
+                            Sitters Near Me
+                        </button>
+                    </div>
+                    <button class="filter-toggle" id="filterToggle">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/>
+                        </svg>
+                        Filters
+                    </button>
+                </div>
+
+                <div class="filters-panel hidden" id="filtersPanel">
+                    <div class="filter-group">
+                        <label>Hourly Rate</label>
+                        <div class="range-inputs">
+                            <input type="number" id="minRate" placeholder="Min" min="0">
+                            <span>to</span>
+                            <input type="number" id="maxRate" placeholder="Max" min="0">
+                        </div>
+                    </div>
+                    <div class="filter-group">
+                        <label>Services</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="service" value="boarding">
+                                <span class="checkmark"></span>
+                                Boarding
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="service" value="walking">
+                                <span class="checkmark"></span>
+                                Walking
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="service" value="sitting">
+                                <span class="checkmark"></span>
+                                Sitting
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="service" value="grooming">
+                                <span class="checkmark"></span>
+                                Grooming
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="service" value="training">
+                                <span class="checkmark"></span>
+                                Training
+                            </label>
+                        </div>
+                    </div>
+                    <div class="filter-group">
+                        <label>Minimum Rating</label>
+                        <div class="rating-filter">
+                            <button class="rating-btn active" data-rating="0">Any</button>
+                            <button class="rating-btn" data-rating="3">3+</button>
+                            <button class="rating-btn" data-rating="4">4+</button>
+                            <button class="rating-btn" data-rating="4.5">4.5+</button>
+                        </div>
+                    </div>
+                    <div class="filter-actions">
+                        <button class="btn btn-ghost" id="clearFilters">Clear All</button>
+                        <button class="btn btn-primary" id="applyFilters">Apply Filters</button>
+                    </div>
+                </div>
+
+                <div class="sitters-results" id="sittersResults">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Shelters Page -->
+        <section class="page" id="sheltersPage" data-page="shelters">
+            <div class="page-header shelters-header">
+                <div class="container">
+                    <h1 class="page-title">Adopt, Don't Shop</h1>
+                    <p class="page-subtitle">Find your new best friend at a local shelter</p>
+                </div>
+            </div>
+            <div class="container">
+                <div class="shelters-search-section">
+                    <div class="search-bar">
+                        <div class="search-input-wrapper">
+                            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"/>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                            </svg>
+                            <input type="text" class="search-input" id="shelterSearchInput" placeholder="Search shelters or pets by name, breed, or location...">
+                            <button class="search-clear" id="shelterSearchClear" aria-label="Clear search">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="18" y1="6" x2="6" y2="18"/>
+                                    <line x1="6" y1="6" x2="18" y2="18"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <button class="btn btn-primary" id="shelterSearchBtn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"/>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                            </svg>
+                            Search
+                        </button>
+                    </div>
+                    <button class="btn btn-secondary" id="registerShelterBtn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+                        </svg>
+                        Register Shelter
+                    </button>
+                </div>
+                <div class="shelters-section">
+                    <h2 class="section-title">Pets Looking for Homes</h2>
+                    <div class="pets-grid" id="petsGrid">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <div class="shelters-section">
+                    <h2 class="section-title">Local Shelters</h2>
+                    <div class="shelters-grid" id="sheltersGrid">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Affiliates Page -->
+        <section class="page" id="affiliatesPage" data-page="affiliates">
+            <div class="page-header affiliates-header">
+                <div class="container">
+                    <h1 class="page-title">Pet Partner Deals</h1>
+                    <p class="page-subtitle">Exclusive offers from our trusted partners</p>
+                </div>
+            </div>
+            <div class="container">
+                <div class="affiliates-section">
+                    <div class="partners-grid" id="partnersGrid">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <div class="deals-section">
+                    <h2 class="section-title">Exclusive Deals</h2>
+                    <div class="deals-grid" id="dealsGrid">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Profile Page -->
+        <section class="page" id="profilePage" data-page="profile">
+            <div class="page-header profile-header">
+                <div class="container">
+                    <h1 class="page-title">My Profile</h1>
+                </div>
+            </div>
+            <div class="container">
+                <div class="profile-content" id="profileContent">
+                    <!-- Profile form populated by JS -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Auth Modal -->
+    <div class="modal hidden" id="authModal">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content auth-modal-content">
+            <button class="modal-close" id="authModalClose">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"/>
+                    <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </button>
+            <div class="auth-tabs">
+                <button class="auth-tab active" data-tab="login">Log In</button>
+                <button class="auth-tab" data-tab="signup">Sign Up</button>
+            </div>
+            <form class="auth-form" id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" required placeholder="you@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" required placeholder="Enter your password">
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Log In</button>
+            </form>
+            <form class="auth-form hidden" id="signupForm">
+                <div class="form-group">
+                    <label for="signupName">Full Name</label>
+                    <input type="text" id="signupName" required placeholder="Your full name">
+                </div>
+                <div class="form-group">
+                    <label for="signupEmail">Email</label>
+                    <input type="email" id="signupEmail" required placeholder="you@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Password</label>
+                    <input type="password" id="signupPassword" required placeholder="Create a password">
+                </div>
+                <div class="form-group">
+                    <label for="signupType">I want to...</label>
+                <select id="signupType" required>
+                    <option value="owner">Find a pet sitter</option>
+                    <option value="sitter">Become a pet sitter</option>
+                    <option value="shelter">Register my pet shelter</option>
+                </select>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Create Account</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Sitter Profile Modal -->
+    <div class="modal hidden" id="sitterModal">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content sitter-modal-content">
+            <button class="modal-close" id="sitterModalClose">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"/>
+                    <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </button>
+            <div class="sitter-modal-body" id="sitterModalBody">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Shelter Signup Modal -->
+    <div class="modal hidden" id="shelterSignupModal">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content" style="max-width: 550px; padding: 40px;">
+            <button class="modal-close" id="shelterSignupClose">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"/>
+                    <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </button>
+            <h3 style="font-size: 1.5rem; margin-bottom: 24px;">Register Your Shelter</h3>
+            <form id="shelterProfileForm">
+                <div class="form-group profile-photo-upload">
+                    <label>Shelter Logo / Photo</label>
+                    <div class="photo-upload-area" id="shelterPhotoUploadArea">
+                        <div class="photo-preview" id="shelterPhotoPreview">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                <circle cx="12" cy="7" r="4"/>
+                            </svg>
+                            <span>Click to upload</span>
+                        </div>
+                        <input type="file" id="shelterPhoto" accept="image/*" hidden>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="shelterRegName">Shelter Name</label>
+                        <input type="text" id="shelterRegName" required placeholder="e.g. Happy Paws Rescue">
+                    </div>
+                    <div class="form-group">
+                        <label for="shelterRegPhone">Phone</label>
+                        <input type="tel" id="shelterRegPhone" required placeholder="(555) 123-4567">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="shelterRegEmail">Email</label>
+                        <input type="email" id="shelterRegEmail" required placeholder="shelter@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="shelterRegWebsite">Website (optional)</label>
+                        <input type="url" id="shelterRegWebsite" placeholder="https://yourshelter.org">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="shelterRegAddress">Address</label>
+                        <input type="text" id="shelterRegAddress" required placeholder="123 Main St">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="shelterRegCity">City</label>
+                        <input type="text" id="shelterRegCity" required placeholder="e.g. Brooklyn">
+                    </div>
+                    <div class="form-group">
+                        <label for="shelterRegZip">ZIP Code</label>
+                        <input type="text" id="shelterRegZip" required placeholder="e.g. 11201">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="shelterRegDescription">About Your Shelter</label>
+                    <textarea id="shelterRegDescription" rows="4" placeholder="Tell the community about your shelter's mission..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Submit Shelter Profile</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Shelter Approval Popup -->
+    <div class="modal hidden" id="shelterApprovalModal">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content" style="max-width: 450px; padding: 40px; text-align: center;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent-primary)" stroke-width="2" style="width:48px;height:48px;margin-bottom:16px;">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+            </svg>
+            <h3 style="margin-bottom: 12px;">Thank You!</h3>
+            <p style="color: var(--text-secondary); line-height: 1.6;">
+                Your shelter registration has been submitted and is pending approval. 
+                Our team will review your information and you'll be notified once your shelter is confirmed.
+            </p>
+            <p style="color: var(--text-muted); font-size: 0.875rem; margin: 16px 0;">
+                Your status is currently: <strong style="color: var(--warning);">Unconfirmed</strong>
+            </p>
+            <button class="btn btn-primary" onclick="document.getElementById('shelterApprovalModal').classList.add('hidden'); navigateTo('profile');">Go to Dashboard</button>
+        </div>
+    </div>
+
+    <!-- Sitter Signup Flow Modal -->
+    <div class="modal hidden" id="sitterSignupModal">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content sitter-signup-modal">
+            <button class="modal-close" id="sitterSignupClose">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"/>
+                    <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </button>
+            <div class="sitter-signup-steps">
+                <div class="step-indicator">
+                    <div class="step-dot active" data-step="1"></div>
+                    <div class="step-line"></div>
+                    <div class="step-dot" data-step="2"></div>
+                    <div class="step-line"></div>
+                    <div class="step-dot" data-step="3"></div>
+                    <div class="step-line"></div>
+                    <div class="step-dot" data-step="4"></div>
+                </div>
+            </div>
+            <form class="sitter-signup-form" id="sitterProfileForm" data-step="1">
+                <div class="signup-step active" data-step="1">
+                    <h3>Basic Information</h3>
+                    <div class="form-group profile-photo-upload">
+                        <label>Profile Photo</label>
+                        <div class="photo-upload-area" id="photoUploadArea">
+                            <div class="photo-preview" id="photoPreview">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                    <circle cx="12" cy="7" r="4"/>
+                                </svg>
+                                <span>Click to upload</span>
+                            </div>
+                            <input type="file" id="sitterPhoto" accept="image/*" hidden>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="sitterName">Full Name</label>
+                            <input type="text" id="sitterName" required placeholder="Your full name">
+                        </div>
+                        <div class="form-group">
+                            <label for="sitterZip">Zip Code</label>
+                            <input type="text" id="sitterZip" required placeholder="10001" maxlength="10">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="sitterLocation">City, State</label>
+                        <input type="text" id="sitterLocation" required placeholder="New York, NY">
+                    </div>
+                    <div class="form-group">
+                        <label for="sitterBio">About You & Your Experience</label>
+                        <textarea id="sitterBio" rows="4" placeholder="Tell pet parents about yourself and your experience with pets..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="sitterExperience">Years of Experience</label>
+                        <select id="sitterExperience">
+                            <option value="0">Just starting</option>
+                            <option value="1">1-2 years</option>
+                            <option value="3">3-5 years</option>
+                            <option value="5">5+ years</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Services Offered</label>
+                        <div class="checkbox-grid">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="sitterService" value="boarding">
+                                <span class="checkmark"></span>
+                                Boarding
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="sitterService" value="walking">
+                                <span class="checkmark"></span>
+                                Walking
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="sitterService" value="sitting">
+                                <span class="checkmark"></span>
+                                Sitting
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="sitterService" value="grooming">
+                                <span class="checkmark"></span>
+                                Grooming
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="sitterService" value="training">
+                                <span class="checkmark"></span>
+                                Training
+                            </label>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-primary btn-full step-next">Continue</button>
+                </div>
+
+                <div class="signup-step" data-step="2">
+                    <h3>Rates & Availability</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="sitterRate">Hourly Rate ($)</label>
+                            <input type="number" id="sitterRate" required min="1" placeholder="25">
+                        </div>
+                        <div class="form-group">
+                            <label for="sitterAvailability">Availability</label>
+                            <select id="sitterAvailability">
+                                <option value="flexible">Flexible</option>
+                                <option value="weekdays">Weekdays</option>
+                                <option value="weekends">Weekends</option>
+                                <option value="evenings">Evenings Only</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Payment Methods Accepted</label>
+                        <div class="payment-methods">
+                            <div class="payment-input">
+                                <span class="payment-icon">$</span>
+                                <input type="text" id="cashapp" placeholder="CashApp Username">
+                            </div>
+                            <div class="payment-input">
+                                <span class="payment-icon">@</span>
+                                <input type="text" id="venmo" placeholder="Venmo Username">
+                            </div>
+                            <div class="payment-input">
+                                <span class="payment-icon">P</span>
+                                <input type="email" id="paypal" placeholder="PayPal Email">
+                            </div>
+                            <div class="payment-input">
+                                <span class="payment-icon">₿</span>
+                                <input type="text" id="bitcoin" placeholder="Bitcoin Address">
+                            </div>
+                            <div class="payment-input">
+                                <span class="payment-icon">🏦</span>
+                                <input type="text" id="bank" placeholder="Bank Transfer Info">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step-buttons">
+                        <button type="button" class="btn btn-secondary step-prev">Back</button>
+                        <button type="button" class="btn btn-primary step-next">Continue</button>
+                    </div>
+                </div>
+
+                <div class="signup-step" data-step="3">
+                    <h3>Choose Your Plan</h3>
+                    <p class="step-description">Select the subscription that works best for you</p>
+                    <div class="subscription-plans">
+                        <label class="plan-card">
+                            <input type="radio" name="subscription" value="free">
+                            <div class="plan-content">
+                                <div class="plan-header">
+                                    <span class="plan-name">Free</span>
+                                    <span class="plan-price">$0<span>/mo</span></span>
+                                </div>
+                                <ul class="plan-features">
+                                    <li>Basic profile listing</li>
+                                    <li>5 booking requests/month</li>
+                                    <li>Standard support</li>
+                                </ul>
+                            </div>
+                        </label>
+                        <label class="plan-card">
+                            <input type="radio" name="subscription" value="pro" checked>
+                            <div class="plan-content">
+                                <div class="plan-badge">Popular</div>
+                                <div class="plan-header">
+                                    <span class="plan-name">Pro</span>
+                                    <span class="plan-price">$15<span>/mo</span></span>
+                                </div>
+                                <ul class="plan-features">
+                                    <li>Featured profile listing</li>
+                                    <li>Unlimited bookings</li>
+                                    <li>Priority support</li>
+                                    <li>Advanced analytics</li>
+                                </ul>
+                            </div>
+                        </label>
+                        <label class="plan-card">
+                            <input type="radio" name="subscription" value="premium">
+                            <div class="plan-content">
+                                <div class="plan-header">
+                                    <span class="plan-name">Premium</span>
+                                    <span class="plan-price">$29<span>/mo</span></span>
+                                </div>
+                                <ul class="plan-features">
+                                    <li>Top placement in search</li>
+                                    <li>Unlimited bookings</li>
+                                    <li>Dedicated account manager</li>
+                                    <li>All Pro features</li>
+                                </ul>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="step-buttons">
+                        <button type="button" class="btn btn-secondary step-prev">Back</button>
+                        <button type="button" class="btn btn-primary step-next">Continue</button>
+                    </div>
+                </div>
+
+                <div class="signup-step" data-step="4">
+                    <h3>Almost Done!</h3>
+                    <p class="step-description">Review your information and submit your profile</p>
+                    <div class="review-summary" id="reviewSummary">
+                        <!-- Populated by JS -->
+                    </div>
+                    <div class="step-buttons">
+                        <button type="button" class="btn btn-secondary step-prev">Back</button>
+                        <button type="button" class="btn btn-primary" id="submitProfileBtn">Submit Profile</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Register Shelter Modal -->
+    <div class="modal hidden" id="shelterModal">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content" style="max-width: 550px; padding: 40px;">
+            <button class="modal-close" id="shelterModalClose">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"/>
+                    <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </button>
+            <h3 style="font-size: 1.5rem; margin-bottom: 24px;">Register Your Shelter</h3>
+            <form id="shelterRegisterForm">
+                <div class="form-group">
+                    <label for="shelterName">Shelter Name</label>
+                    <input type="text" id="shelterName" required placeholder="e.g. Happy Paws Rescue">
+                </div>
+                <div class="form-group">
+                    <label for="shelterEmail">Email</label>
+                    <input type="email" id="shelterEmail" required placeholder="shelter@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="shelterPhone">Phone</label>
+                    <input type="tel" id="shelterPhone" required placeholder="(555) 123-4567">
+                </div>
+                <div class="form-group">
+                    <label for="shelterAddress">Address</label>
+                    <input type="text" id="shelterAddress" required placeholder="123 Main St, City, State ZIP">
+                </div>
+                <div class="form-group">
+                    <label for="shelterWebsite">Website (optional)</label>
+                    <input type="url" id="shelterWebsite" placeholder="https://yourshelter.org">
+                </div>
+                <div class="form-group">
+                    <label for="shelterMessage">Additional Message</label>
+                    <textarea id="shelterMessage" rows="4" placeholder="Tell us about your shelter..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Submit Registration</button>
+                <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 16px; text-align: center;">Your registration will be sent to pawnamics.contact@gmail.com for review.</p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu hidden" id="mobileMenu">
+        <div class="mobile-menu-content">
+            <nav class="mobile-nav">
+                <a href="#" class="mobile-nav-link active" data-page="home">Home</a>
+                <a href="#" class="mobile-nav-link" data-page="sitters">Find Sitters</a>
+                <a href="#" class="mobile-nav-link" data-page="shelters">Shelters</a>
+                <a href="#" class="mobile-nav-link" data-page="affiliates">Affiliates</a>
+            </nav>
+            <div class="mobile-auth" id="mobileAuth">
+                <button class="btn btn-ghost btn-full" id="mobileLoginBtn">Log In</button>
+                <button class="btn btn-primary btn-full" id="mobileSignupBtn">Sign Up</button>
+            </div>
+            <div class="mobile-user hidden" id="mobileUserMenu">
+                <button class="btn btn-secondary btn-full" id="mobileProfileBtn">My Profile</button>
+                <button class="btn btn-ghost btn-full text-danger" id="mobileLogoutBtn">Log Out</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast hidden" id="toast">
+        <div class="toast-content">
+            <svg class="toast-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="20 6 9 17 4 12"/>
+            </svg>
+            <span class="toast-message" id="toastMessage">Success!</span>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo" data-page="home">
+                        <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+                            <circle cx="9" cy="10" r="1" fill="currentColor"/>
+                            <circle cx="15" cy="10" r="1" fill="currentColor"/>
+                        </svg>
+                        <span>PawNamics</span>
+                    </a>
+                    <p>Connecting pets with loving care since 2024. Your trusted partner for finding the perfect pet sitter.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <a href="#" data-page="home">Home</a>
+                    <a href="#" data-page="sitters">Find Sitters</a>
+                    <a href="#" data-page="shelters">Shelters</a>
+                    <a href="#" data-page="affiliates">Affiliates</a>
+                </div>
+                <div class="footer-links">
+                    <h4>For Sitters</h4>
+                    <a href="#" id="footerBecomeSitter">Become a Sitter</a>
+                    <a href="#">Sitter Resources</a>
+                    <a href="#">Community Forum</a>
+                    <a href="#">Sitter FAQ</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Support</h4>
+                    <a href="#">Help Center</a>
+                    <a href="#">Contact Us</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 PawNamics. All rights reserved. Made with love for pets everywhere.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Video Meet Modal -->
+    <div class="modal hidden" id="videoMeetModal">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content video-meet-content">
+            <div class="video-meet-container">
+                <div class="video-meet-header">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px;color:var(--error)"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                    <span>Video Meet — <span class="video-other-name">Participant</span></span>
+                    <button class="video-close-btn" id="videoMeetClose" title="Close (Esc)" onclick="closeVideoMeet()">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    </button>
+                </div>
+                <div class="video-grid">
+                    <div class="video-remote">
+                        <div class="video-placeholder">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:48px;height:48px"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                            <span class="video-other-name" style="margin-top:12px;font-size:1rem;">Participant</span>
+                            <span style="font-size:0.8125rem;color:var(--text-muted);margin-top:4px;">Connecting...</span>
+                        </div>
+                    </div>
+                    <div class="video-local">
+                        <div class="video-placeholder">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:32px;height:32px"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                            <span style="font-size:0.75rem;color:var(--text-muted);margin-top:4px;">You</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="video-controls">
+                    <button class="video-control-btn" id="videoMuteBtn" title="Mute">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mic-on"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mic-off" style="display:none"><line x1="1" y1="1" x2="23" y2="23"/><path d="M9 9v3a3 3 0 0 0 5.12 2.12M15 9.34V4a3 3 0 0 0-5.94-.6"/><path d="M17 16.95A7 7 0 0 1 5 12v-2m14 0v2a7 7 0 0 1-.11 1.23"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+                    </button>
+                    <button class="video-control-btn" id="videoCamBtn" title="Video Off">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="cam-on"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="cam-off" style="display:none"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+                    </button>
+                    <button class="video-control-btn video-end-call" id="videoMeetEnd" title="End Call">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    </button>
+                    <button class="video-control-btn" id="videoChatBtn" title="Chat">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    </button>
+                    <button class="video-control-btn" id="videoShareBtn" title="Screen Share">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                    </button>
+                </div>
+                <div class="video-chat-panel hidden" id="videoChatPanel">
+                    <div class="video-chat-header">Call Chat</div>
+                    <div class="video-chat-messages" id="videoChatMessages">
+                        <p style="color:var(--text-muted);font-size:0.8125rem;text-align:center;padding:16px;">Messages in this call are not saved.</p>
+                    </div>
+                    <div class="video-chat-input-row">
+                        <input type="text" class="video-chat-input" placeholder="Type here..." onkeydown="if(event.key==='Enter')sendVideoChatMsg(this)">
+                        <button type="button" class="btn btn-primary btn-sm" onclick="sendVideoChatMsg(this.previousElementSibling)">Send</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var btn = document.getElementById('findSitterBtn');
+        if (btn) {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                document.querySelectorAll('.page').forEach(function(p) { p.classList.remove('active'); });
+                document.getElementById('sittersPage').classList.add('active');
+                window.scrollTo(0, 0);
+                return false;
+            });
+        }
+    </script>
+    <script src="app.js"></script>
+</body>
+</html>
