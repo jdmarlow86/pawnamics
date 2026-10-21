@@ -15,10 +15,60 @@ function switchAuthTab(tab) {
     if (tab === 'login') {
         elements.loginForm?.classList.remove('hidden');
         elements.signupForm?.classList.add('hidden');
+    } else if (tab === 'recovery') {
+        elements.loginForm?.classList.add('hidden');
+        elements.signupForm?.classList.add('hidden');
+        document.getElementById('recoveryForm')?.classList.remove('hidden');
     } else {
         elements.loginForm?.classList.add('hidden');
         elements.signupForm?.classList.remove('hidden');
+        document.getElementById('recoveryForm')?.classList.add('hidden');
     }
+}
+
+function showAccountRecovery() {
+    elements.authModal?.classList.remove('hidden');
+    elements.authTabs.forEach(t => t.classList.remove('active'));
+    elements.loginForm?.classList.add('hidden');
+    elements.signupForm?.classList.add('hidden');
+    document.getElementById('recoveryForm')?.classList.remove('hidden');
+    document.getElementById('recoveryEmail')?.focus();
+}
+
+function returnToLogin() {
+    document.getElementById('recoveryForm')?.classList.add('hidden');
+    switchAuthTab('login');
+}
+
+function handlePasswordRecovery(e) {
+    e.preventDefault();
+    const email = document.getElementById('recoveryEmail')?.value.trim().toLowerCase();
+    const password = document.getElementById('recoveryPassword')?.value || '';
+    const confirm = document.getElementById('recoveryPasswordConfirm')?.value || '';
+
+    if (password.length < 6) {
+        showToast('Choose a password with at least 6 characters', 'error');
+        return;
+    }
+    if (password !== confirm) {
+        showToast('The passwords do not match', 'error');
+        return;
+    }
+
+    // This is deliberately a local-only prototype flow, not secure account recovery.
+    const users = JSON.parse(localStorage.getItem('pawnamics_users') || '[]');
+    const user = users.find(u => String(u.email || '').toLowerCase() === email);
+    if (!user) {
+        showToast('No matching demo account was found in this browser', 'error');
+        return;
+    }
+    user.password = password;
+    localStorage.setItem('pawnamics_users', JSON.stringify(users));
+    document.getElementById('recoveryForm')?.reset();
+    returnToLogin();
+    const loginEmail = document.getElementById('loginEmail');
+    if (loginEmail) loginEmail.value = email;
+    showToast('Demo password updated on this device');
 }
 
 function handleLogin(e) {
