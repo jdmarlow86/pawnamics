@@ -122,6 +122,9 @@ function setupEventListeners() {
     
     // Auth forms
     elements.loginForm?.addEventListener('submit', handleLogin);
+    document.getElementById('showRecoveryBtn')?.addEventListener('click', showAccountRecovery);
+    document.getElementById('backToLoginBtn')?.addEventListener('click', returnToLogin);
+    document.getElementById('recoveryForm')?.addEventListener('submit', handlePasswordRecovery);
     elements.signupForm?.addEventListener('submit', handleSignup);
     
     // User menu
