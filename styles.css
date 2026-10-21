@@ -3087,3 +3087,25 @@ input, select, textarea {
         overflow-y: auto;
     }
 }
+
+
+/* Account recovery */
+.auth-recovery-link {
+    text-align: center;
+    margin: 14px 0 0;
+}
+.text-link {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--accent, #f5a623);
+    text-decoration: underline;
+    cursor: pointer;
+    font: inherit;
+}
+.auth-recovery-note {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    line-height: 1.55;
+    margin: 0 0 18px;
+}
