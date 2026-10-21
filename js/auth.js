@@ -15,6 +15,7 @@ function switchAuthTab(tab) {
     if (tab === 'login') {
         elements.loginForm?.classList.remove('hidden');
         elements.signupForm?.classList.add('hidden');
+        document.getElementById('recoveryForm')?.classList.add('hidden');
     } else if (tab === 'recovery') {
         elements.loginForm?.classList.add('hidden');
         elements.signupForm?.classList.add('hidden');
